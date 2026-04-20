@@ -1,0 +1,102 @@
+name: Playwright API Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-dev:
+    name: DEV API Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start API container
+        run: |
+          docker run -d --name sdet-api -p 3000:3000 ghcr.io/danielsilva-loanpro/sdet-interview-challenge:latest
+          sleep 10
+
+      - name: Run Playwright tests against DEV
+        env:
+          API_ENV: dev
+        run: npx playwright test tests/users.spec.ts --reporter=html
+
+      - name: Rename DEV report folder
+        if: always()
+        run: |
+          if [ -d "playwright-report" ]; then mv playwright-report playwright-report-dev; fi
+
+      - name: Upload DEV report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-dev
+          path: playwright-report-dev
+          if-no-files-found: ignore
+
+      - name: Upload DEV raw results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-dev
+          path: test-results
+          if-no-files-found: ignore
+
+  test-prod:
+    name: PROD API Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start API container
+        run: |
+          docker run -d --name sdet-api -p 3000:3000 ghcr.io/danielsilva-loanpro/sdet-interview-challenge:latest
+          sleep 10
+
+      - name: Run Playwright tests against PROD
+        env:
+          API_ENV: prod
+        run: npx playwright test tests/users.spec.ts --reporter=html
+
+      - name: Rename PROD report folder
+        if: always()
+        run: |
+          if [ -d "playwright-report" ]; then mv playwright-report playwright-report-prod; fi
+
+      - name: Upload PROD report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-prod
+          path: playwright-report-prod
+          if-no-files-found: ignore
+
+      - name: Upload PROD raw results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-prod
+          path: test-results
+          if-no-files-found: ignore

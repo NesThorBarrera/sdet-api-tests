@@ -3,6 +3,7 @@ const environment = process.env.API_ENV || 'prod';
 const basePath = `/${environment}/users`;
 
 
+// Generates a unique email to avoid conflicts in tests (email is primary key)
 function getUniqueEmail(prefix: string) {
   return `${prefix}_${Math.floor(Math.random() * 100000)}@mail.com`;
 }

@@ -17,6 +17,8 @@ This repository contains an automated API test suite built using Playwright-Type
 - bugs.md: Documented issues found during testing
 - .github/workflows: CI pipeline configuration
 
+---
+
 # Setup & Execution
 ## Install dependencies:
 - gitbash - npm ci
@@ -27,6 +29,8 @@ This repository contains an automated API test suite built using Playwright-Type
 ## Run tests with HTML report:
 - npx playwright test tests/users.spec.ts --reporter=html
 - npx playwright show-report
+
+---
 
 # Environments
 The test suite supports two environments:
@@ -39,6 +43,8 @@ The test suite supports two environments:
 ### Example:
 - API_ENV=dev npx playwright test
 - API_ENV=prod npx playwright test
+
+---
 
 # Test Coverage
 
@@ -64,6 +70,8 @@ The suite covers:
 ## PUT
 - Update user scenarios (if applicable)
 
+---
+
 # Bugs Identified
 
 All discovered discrepancies between expected and actual API behavior are documented in:
@@ -75,6 +83,8 @@ Summary of issues:
 - Duplicate email → returns 500 instead of 409
 - DEV environment → returns 404 instead of 401 when auth is missing
 
+---
+
 # Playwright generates HTML reports.
 
 To view locally:
@@ -83,6 +93,8 @@ To view locally:
 In CI, reports are uploaded as artifacts:
 - playwright-report-dev
 - playwright-report-prod
+
+---
 
 # CI/CD Pipeline
 

@@ -71,10 +71,10 @@ All discovered discrepancies between expected and actual API behavior are docume
 bugs.md
 
 Summary of issues:
-Invalid email is accepted → returns 201 instead of 400
-Non-existing user returns 500 instead of 404
-Duplicate email returns 500 instead of 409
-DEV environment returns 404 instead of 401 when auth is missing
+- Invalid email is accepted → returns 201 instead of 400
+- Non-existing user → returns 500 instead of 404
+- Duplicate email → returns 500 instead of 409
+- DEV environment → returns 404 instead of 401 when auth is missing
 
 # Playwright generates HTML reports.
 

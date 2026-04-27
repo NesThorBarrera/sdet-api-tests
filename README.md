@@ -12,14 +12,10 @@ This repository contains an automated API test suite built using Playwright-Type
 ---
 
 # Project Structure:
-.
-├── .github/workflows/playwright.yml # CI pipeline (DEV + PROD)
-├── tests/
-│ └── users.spec.ts # Main test suite
-├── bugs.md # Identified defects
-├── playwright.config.ts # Playwright configuration
-├── package.json
-└── README.md
+- tests/: Contains all API test cases
+- playwright.config.ts: Configuration for test execution
+- bugs.md: Documented issues found during testing
+- .github/workflows: CI pipeline configuration
 
 # Setup & Execution
 

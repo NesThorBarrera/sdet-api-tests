@@ -18,52 +18,51 @@ This repository contains an automated API test suite built using Playwright-Type
 - .github/workflows: CI pipeline configuration
 
 # Setup & Execution
+## Install dependencies:
+- gitbash - npm ci
 
-# Install dependencies:
-gitbash - npm ci
+## Run Tests locally:
+- npx playwright test tests/users.spec.ts
 
-# Run Tests locally:
-npx playwright test tests/users.spec.ts
-
-# Run tests with HTML report:
-npx playwright test tests/users.spec.ts --reporter=html
-npx playwright show-report
+## Run tests with HTML report:
+- npx playwright test tests/users.spec.ts --reporter=html
+- npx playwright show-report
 
 # Environments
 The test suite supports two environments:
-DEV
-PROD
+- DEV
+- PROD
 
-# Environment is controlled via:
-API_ENV=dev
-API_ENV=prod
+## Environment is controlled via:
+- API_ENV=dev
+- API_ENV=prod
 ## Example:
-API_ENV=dev npx playwright test
-API_ENV=prod npx playwright test
+- API_ENV=dev npx playwright test
+- API_ENV=prod npx playwright test
 
 # Test Coverage
 
 The suite covers:
 
-# GET
-Retrieve all users
-Retrieve user by email
-Validate non-existing user
+## GET
+- Retrieve all users
+- Retrieve user by email
+- Validate non-existing user
 
-# POST
-Create user
-Missing fields validation
-Invalid age scenarios
-Invalid email format
-Duplicate email validation
+## POST
+- Create user
+- Missing fields validation
+- Invalid age scenarios
+- Invalid email format
+- Duplicate email validation
 
-# DELETE
-Delete user with valid auth
-Missing auth validation
-Non-existing user validation
+## DELETE
+- Delete user with valid auth
+- Missing auth validation
+- Non-existing user validation
 
-# PUT
-Update user scenarios (if applicable)
+## PUT
+- Update user scenarios (if applicable)
 
 # Bugs Identified
 
@@ -79,22 +78,22 @@ Summary of issues:
 # Playwright generates HTML reports.
 
 To view locally:
-gitbash - npx playwright show-report
+- gitbash - npx playwright show-report
 
 In CI, reports are uploaded as artifacts:
-playwright-report-dev
-playwright-report-prod
+- playwright-report-dev
+- playwright-report-prod
 
 # CI/CD Pipeline
 
 GitHub Actions pipeline includes:
-DEV Stage:
+- DEV Stage:
 Runs tests against DEV environment
 
-PROD Stage:
+- PROD Stage:
 Runs tests against PROD environment
 
-Behavior:
+- Behavior:
 Both stages run in parallel
 Failures do not block execution
 Reports are always uploaded

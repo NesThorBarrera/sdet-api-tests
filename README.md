@@ -36,7 +36,7 @@ The test suite supports two environments:
 ## Environment is controlled via:
 - API_ENV=dev
 - API_ENV=prod
-## Example:
+### Example:
 - API_ENV=dev npx playwright test
 - API_ENV=prod npx playwright test
 
